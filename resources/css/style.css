@@ -1,0 +1,483 @@
+@charset "UTF-8";
+
+:root {
+  --primary-color: #225779;
+  --background-color: #edf0f1;
+  --button-background: #fff;
+  --text-color: #fff;
+  --todo-text-color: #333;
+  --text-placeholder-color: rgba(224, 224, 224, 0.51);
+  --todo-background: #fff;
+  --shadow-color: rgba(44, 62, 80, 0.10);
+  --hover-background: rgb(56, 162, 164);
+  --remove-button-fill: #c0cecb;
+  --remove-button-hover-fill: #e85656;
+  --complete-button-fill: #57cb98;
+  --divider-color: #d8e5e0;
+  --inter-bold: 700;
+  --inter-medium: 500;
+  --inter-regular: 400;
+}
+
+body {
+  font-family: "Inter", "Helvetica", sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "slnt" 0;
+}
+
+body {
+  background: var(--background-color);
+}
+
+.noFill {
+  fill: none;
+}
+
+header {
+  display: flex;
+  flex-direction: column; /* Stack the children vertically */
+  align-items: center; /* Center-align children horizontally */
+  width: 100%;
+  padding: 15px;
+  background: var(--primary-color);
+  box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+header h1 {
+  width: 100%; /* Take the full width of the header */
+  text-align: center;
+  float: left;
+  font-size: 20px;
+  font-weight: var(--inter-bold);
+  color: var(--text-color);
+  line-height: 50px;
+}
+
+.input-wrapper {
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+}
+
+.input-wrapper-text {
+  width: 100%;
+  position: relative;
+}
+
+.input-wrapper-time-picker {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+
+
+label {
+  display: block;
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: var(--inter-regular);
+  margin-bottom: 0.5em;
+}
+
+input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 0.5em;
+  background: var(--text-placeholder-color);
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  border-radius: 5px 5px 5px 5px;
+  font: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: var(--text-color);
+}
+
+header input {
+  flex-grow: 1;
+}
+#item {
+  width: 100%;
+  height: 50px;
+  float: left;
+  color: var(--text-color);
+  font-size: 15px;
+  border-radius: 5px 5px 5px 5px;
+  font-weight: var(--inter-regular);
+  text-indent: 18px;
+  padding: 0 15px 0 15px;
+  background: var(--text-placeholder-color);
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+label #view-date{
+  margin-top: 20px;
+}
+header input::-webkit-input-placeholder {
+  color: var(--text-placeholder-color);
+}
+
+header input:-ms-input-placeholder {
+  color:  var(--text-placeholder-color);
+}
+
+header button {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  right: 0;
+  z-index: 2;
+  border-radius: 25px;
+  background: var(--button-background);
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+header button svg {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+}
+
+header button svg .fill {
+  fill: var(--primary-color);
+}
+
+.header-controls {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.header-controls button svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--primary-color);
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column; /* Stack the children vertically */
+  width: 100%;
+  padding: 15px;
+}
+
+.container h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: var(--inter-bold);
+  color: var(--todo-text-color);
+  line-height: 50px;
+}
+
+#current-date{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-placeholder-color);
+
+}
+
+.time-slots {
+  list-style-type: none;
+  padding: 0;
+}
+
+.time-slot {
+  width: 100%;
+  min-height: 50px;
+  font-size: 14px;
+  font-weight: var(--inter-regular);
+  color: var(--todo-text-color);
+  word-break: break-word;
+
+  position: relative;
+  background: var(--todo-background);
+  border-radius: 5px;
+  padding: 14px;
+  box-shadow: 0 1px 2px var(--shadow-color);
+
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  position: absolute;
+  right: 17px;
+}
+
+.buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.buttons button svg {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.buttons .remove svg {
+  fill: var(--remove-button-fill);
+
+}
+
+.buttons .remove:hover svg {
+  fill: var(--remove-button-hover-fill);
+  transition: background 0.2s ease;
+}
+
+.buttons .complete svg {
+  border-radius: 50%;
+  border: 1.5px solid var(--complete-button-fill);
+  transition: background 0.2s ease;
+  fill: var(--complete-button-fill);
+}
+
+.buttons .complete:hover svg {
+  background: var(--complete-button-fill);
+  fill: #fff;
+}
+
+.buttons .completed svg {
+  background: var(--complete-button-fill);
+  fill: #fff;
+}
+
+.task-content.completed {
+  text-decoration: line-through;
+}
+
+/* Timeline styles */
+.timeline-container {
+  margin-top: 15px;
+}
+
+.timeline {
+  margin-left: 55px;
+  list-style: none;
+  position: relative;
+  padding: 0;
+  color: var(--todo-text-color);
+}
+
+.timeline:before {
+  content: '';
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  left: -17px;
+  border-left: 2px dashed var(--text-color);
+}
+
+.timeline li {
+  position: relative;
+  border-radius: 6px;
+}
+
+.timeline li:not(:first-child) {
+  margin-top: 45px;
+}
+
+.timeline li > span {
+  width: 2px;
+  height: 100%;
+  background: var(--text-color);
+  left: -17px;
+  top: 0;
+  position: absolute;
+}
+
+.timeline li > span:before, .timeline li > span:after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--text-color);
+  position: absolute;
+  background: var(--primary-color);
+  left: -5px;
+  top: 0;
+}
+
+.timeline li > span:after {
+  top: 100%;
+}
+
+.timeline li .number {
+  height: 100%;
+}
+
+.timeline li .number span {
+  position: absolute;
+  font-size: 10px;
+  left: -35px;
+  font-weight: var(--inter-medium);
+}
+
+.timeline li .number span:first-child {
+  top: 0;
+}
+
+.timeline li .number span:last-child {
+  top: 100%;
+}
+
+/* Custom Alert Box Styles */
+.alert {
+  padding: 20px;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  display: none;
+}
+.alert.error{
+  background-color: var(--remove-button-hover-fill)
+}
+
+.alert.success{
+  background-color: #4CAF50;
+}
+
+.alert.info{
+  background-color: var(--hover-background);
+}
+
+.alert.show {
+  display: block;
+}
+
+.close-button {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-button:hover {
+  color: black;
+}
+
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-wrapper-time-picker {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+  }
+
+  #add {
+    position: absolute;
+    right: 0;
+  }
+
+  #task-duration{
+    margin-left: 25px;
+  }
+
+  header .input-wrapper {
+    max-width: 768px;
+  }
+
+  .container {
+    width: 768px;
+  }
+
+  .timeline:before {
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    left: -30px;
+    border-left: 2px dashed var(--text-color);
+  }
+
+  .timeline {
+    margin: 0;
+    list-style: none;
+    position: relative;
+    padding: 0;
+    color: var(--todo-text-color);
+  }
+
+  .timeline li {
+    position: relative;
+    border-radius: 6px;
+  }
+
+  .timeline li:not(:first-child) {
+    margin-top: 45px;
+  }
+
+  .timeline li > span {
+    width: 2px;
+    height: 100%;
+    background: var(--text-color);
+    left: -30px;
+    top: 0;
+    position: absolute;
+  }
+
+  .timeline li > span:before, .timeline li > span:after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid var(--text-color);
+    position: absolute;
+    background: var(--primary-color);
+    left: -5px;
+    top: 0;
+  }
+
+  .timeline li > span:after {
+    top: 100%;
+  }
+
+  .timeline li .number {
+    height: 100%;
+  }
+
+  .timeline li .number span {
+    position: absolute;
+    font-size: 10px;
+    left: -35px;
+    font-weight: var(--inter-medium);
+  }
+}
+
+
